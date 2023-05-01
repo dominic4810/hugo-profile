@@ -3,8 +3,12 @@
         <div class="col-md-4 text-center">
             <div class="pb-2">
                 <a href="{{ .Site.BaseURL }}" title="{{ .Site.Title }}">
+                    {{ if .Site.Params.navbar.showBrandLogo | default true }}
                     <img alt="Footer logo" src="{{ .Site.Params.navbar.brandLogo | default .Site.Params.favicon }}"
                         height="40px" width="40px">
+                    {{ else }}
+                    {{ .Site.Params.navbar.brandName | default .Site.Params.title }}
+                    {{ end }}
                 </a>
             </div>
             &copy; {{ now.Format "2006"}} {{ .Site.Params.copyright }} {{ .Site.Params.terms.copyright | default "All Rights Reserved" }}
